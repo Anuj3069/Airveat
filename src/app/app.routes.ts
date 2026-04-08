@@ -34,7 +34,12 @@ export const routes: Routes = [
   {
     path: 'why-choose-us',
     loadComponent: () => import('./pages/why-choose-us/why-choose-us.component').then(m => m.WhyChooseUsComponent),
-    title: 'Why Choose Us — Airveat'
+    title: 'Why Choice Us — Airveat'
+  },
+  {
+    path: 'about-us',
+    loadComponent: () => import('./pages/about-us/about-us.component').then(m => m.AboutUsComponent),
+    title: 'About Us — Airveat'
   },
   {
     path: 'how-it-works',

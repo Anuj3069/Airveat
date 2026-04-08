@@ -61,7 +61,11 @@ import { CommonModule } from '@angular/common';
             <div class="nav-dot"></div>
           </div>
           <div class="nav-item-wrap">
-            <a routerLink="/why-choose-us" routerLinkActive="active" class="nav-link">About</a>
+            <a routerLink="/about-us" routerLinkActive="active" class="nav-link">About Us</a>
+            <div class="nav-dot"></div>
+          </div>
+          <div class="nav-item-wrap">
+            <a routerLink="/why-choose-us" routerLinkActive="active" class="nav-link">Why Choice Us</a>
             <div class="nav-dot"></div>
           </div>
           <div class="nav-item-wrap">
@@ -107,6 +111,9 @@ import { CommonModule } from '@angular/common';
           </a>
           <a routerLink="/how-it-works" (click)="closeMenu()" routerLinkActive="active">
             <span class="material-icons-outlined">auto_awesome</span> How It Works
+          </a>
+          <a routerLink="/about-us" (click)="closeMenu()" routerLinkActive="active">
+            <span class="material-icons-outlined">info</span> About Us
           </a>
           <a routerLink="/why-choose-us" (click)="closeMenu()" routerLinkActive="active">
             <span class="material-icons-outlined">verified</span> Why Us

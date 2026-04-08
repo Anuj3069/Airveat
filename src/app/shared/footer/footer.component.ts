@@ -42,7 +42,7 @@ import { CommonModule } from '@angular/common';
           <div class="link-col">
             <h4 class="col-title">Company</h4>
             <nav class="footer-nav">
-              <a routerLink="/">About Us</a>
+              <a routerLink="/about-us">About Us</a>
               <a routerLink="/how-it-works">How It Works</a>
               <a routerLink="/services">Our Services</a>
               <a href="#">Career <span class="badge">Hiring</span></a>
