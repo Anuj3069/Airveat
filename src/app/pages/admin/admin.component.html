@@ -1,0 +1,108 @@
+<section class="admin-section animate-fade-in">
+  <div class="container admin-container">
+    <div class="admin-header text-center">
+      <h1 class="page-title">Add New Service</h1>
+      <p class="subtitle">Enter the details below to publish a new service to the platform.</p>
+    </div>
+
+    <div class="admin-card">
+      <div *ngIf="successMessage" class="success-alert animate-fade-in-up">
+        <span class="material-icons-outlined">check_circle</span>
+        {{ successMessage }}
+      </div>
+
+      <form (ngSubmit)="onSubmit()" #addServiceForm="ngForm" class="add-service-form">
+        <!-- Service Name -->
+        <div class="form-group">
+          <label for="serviceName">Service Title</label>
+          <input 
+            type="text" 
+            id="serviceName" 
+            name="serviceName" 
+            [(ngModel)]="serviceName" 
+            placeholder="e.g. Premium Carpet Cleaning" 
+            class="form-control" 
+            required
+            [disabled]="isSubmitting">
+        </div>
+
+        <div class="form-row">
+          <!-- Category -->
+          <div class="form-group">
+            <label for="category">Category</label>
+            <div class="select-wrapper">
+              <select id="category" name="category" [(ngModel)]="category" class="form-control" required [disabled]="isSubmitting">
+                <option value="home-cleaning">Home Cleaning</option>
+                <option value="electrical-plumbing">Electrical & Plumbing</option>
+                <option value="painting-renovation">Painting & Renovation</option>
+                <option value="salon-at-home">Salon at Home</option>
+                <option value="ac-repair">AC & Appliance Repair</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Price Type -->
+          <div class="form-group">
+            <label for="priceType">Price Type</label>
+            <div class="select-wrapper">
+              <select id="priceType" name="priceType" [(ngModel)]="priceType" class="form-control" required [disabled]="isSubmitting">
+                <option value="starts">Starts At</option>
+                <option value="hourly">Hourly Rate</option>
+                <option value="fixed">Fixed Price</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Price -->
+          <div class="form-group">
+            <label for="price">Price Amount</label>
+            <input 
+              type="text" 
+              id="price" 
+              name="price" 
+              [(ngModel)]="price" 
+              placeholder="e.g. $120" 
+              class="form-control" 
+              required
+              [disabled]="isSubmitting">
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+          <label for="description">Service Description</label>
+          <textarea 
+            id="description" 
+            name="description" 
+            [(ngModel)]="description" 
+            rows="4" 
+            placeholder="Describe what the service includes..." 
+            class="form-control" 
+            required
+            [disabled]="isSubmitting"></textarea>
+        </div>
+
+        <!-- Badge -->
+        <div class="form-group">
+          <label for="badge">Card Badge (Optional)</label>
+          <input 
+            type="text" 
+            id="badge" 
+            name="badge" 
+            [(ngModel)]="badge" 
+            placeholder="e.g. Bestseller, 20% OFF" 
+            class="form-control"
+            [disabled]="isSubmitting">
+        </div>
+
+        <!-- Submit -->
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-submit" [disabled]="addServiceForm.invalid || isSubmitting">
+            <span *ngIf="!isSubmitting">Publish Service</span>
+            <span *ngIf="isSubmitting" class="spinner"></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

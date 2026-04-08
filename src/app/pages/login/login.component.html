@@ -1,0 +1,70 @@
+<section class="login-section animate-fade-in">
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-logo-container">
+          <img src="images/logo.png" alt="Airveat Logo" class="login-logo-img">
+          <span class="login-logo-text">Airveat</span>
+        </div>
+        <h2>Welcome Back</h2>
+        <p class="subtitle">Enter your credentials to access your account.</p>
+      </div>
+
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="login-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            [(ngModel)]="username" 
+            required 
+            placeholder="e.g. admin"
+            class="form-control"
+            [disabled]="isLoading"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            [(ngModel)]="password" 
+            required 
+            placeholder="••••••••"
+            class="form-control"
+            [disabled]="isLoading"
+          >
+        </div>
+
+        <div class="form-options">
+          <label class="checkbox-container">
+            <input type="checkbox" name="remember" [disabled]="isLoading">
+            <span class="checkmark"></span>
+            Remember me
+          </label>
+          <a href="#" class="forgot-password" (click)="$event.preventDefault()">Forgot password?</a>
+        </div>
+
+        <div *ngIf="errorMessage" class="error-message animate-fade-in-up">
+          {{ errorMessage }}
+        </div>
+
+        <button 
+          type="submit" 
+          class="btn btn-primary btn-full" 
+          [disabled]="loginForm.invalid || isLoading"
+        >
+          <span *ngIf="!isLoading">Sign In</span>
+          <span *ngIf="isLoading" class="spinner"></span>
+        </button>
+      </form>
+
+      <div class="login-footer">
+        <p>Don't have an account? <a routerLink="/partner">Become a partner</a></p>
+      </div>
+    </div>
+  </div>
+</section>

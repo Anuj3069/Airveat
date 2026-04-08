@@ -1,0 +1,137 @@
+<div class="how-it-works-page">
+  <section class="how-hero">
+    <div class="container how-hero-grid">
+      <div class="hero-copy animate-fade-in-up">
+        <span class="hero-kicker">How it works</span>
+        <h1>From booking to done, the whole experience stays simple.</h1>
+        <p>
+          Airveat turns home help into a guided, transparent flow. You book in minutes,
+          get matched with a trusted professional, and stay in control the whole way through.
+        </p>
+
+        <div class="hero-actions">
+          <a routerLink="/services" class="btn btn-primary btn-lg">Book a Service</a>
+          <a routerLink="/contact-us" class="btn btn-outline btn-lg">Talk to Support</a>
+        </div>
+
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <strong>4 steps</strong>
+            <span>to complete the full service journey</span>
+          </div>
+          <div class="metric-card">
+            <strong>Transparent</strong>
+            <span>pricing, scheduling, and status updates</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-panel animate-fade-in">
+        <div class="experience-card">
+          <div class="experience-header">
+            <span>Service flow</span>
+            <div class="status-pill">
+              <span class="status-dot"></span>
+              Live updates
+            </div>
+          </div>
+
+          <div class="experience-track">
+            <div class="track-line"></div>
+            <div class="track-item" *ngFor="let moment of serviceMoments; let i = index">
+              <div class="track-bullet">{{ i + 1 }}</div>
+              <div class="track-copy">
+                <strong>{{ moment }}</strong>
+                <span>{{ i === 0 ? 'Start with a few booking details' : i === 1 ? 'Review the job before it begins' : i === 2 ? 'A trusted expert comes prepared' : 'Close the loop in seconds' }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="experience-footer">
+            <div>
+              <span class="footer-label">Average booking feel</span>
+              <strong>Quick, clear, and reliable</strong>
+            </div>
+            <span class="material-icons-outlined">east</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-tag">Step-by-step flow</span>
+        <h2>Everything is designed to feel guided, not complicated.</h2>
+        <p>
+          Each stage removes friction so you can move from need to completion with clarity.
+        </p>
+      </div>
+
+      <div class="process-grid">
+        <article class="process-card" *ngFor="let item of processSteps; let i = index">
+          <div class="process-top">
+            <span class="process-number">{{ item.step }}</span>
+            <div class="process-icon">
+              <span class="material-icons-outlined">{{ item.icon }}</span>
+            </div>
+          </div>
+
+          <span class="process-eyebrow">{{ item.eyebrow }}</span>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+
+          <ul class="process-points">
+            <li *ngFor="let point of item.points">
+              <span class="material-icons-outlined">check</span>
+              {{ point }}
+            </li>
+          </ul>
+
+          <div class="process-accent" [class.is-visible]="i < processSteps.length - 1"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-section">
+    <div class="container trust-grid">
+      <div class="trust-panel trust-panel-dark">
+        <span class="section-tag light">Why customers like the flow</span>
+        <h2>Clean booking experience. Strong service confidence.</h2>
+        <p>
+          We combine familiar scheduling, clear pricing, and verified professionals so the
+          process feels modern but still dependable.
+        </p>
+      </div>
+
+      <div class="trust-highlights">
+        <article class="trust-card" *ngFor="let highlight of trustHighlights">
+          <div class="trust-icon">
+            <span class="material-icons-outlined">{{ highlight.icon }}</span>
+          </div>
+          <div>
+            <h3>{{ highlight.title }}</h3>
+            <p>{{ highlight.description }}</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container cta-shell">
+      <div>
+        <span class="section-tag">Ready when you are</span>
+        <h2>See how smooth your next booking can feel.</h2>
+        <p>Choose a service, lock a time, and let us handle the rest with confidence.</p>
+      </div>
+
+      <div class="cta-actions">
+        <a routerLink="/services" class="btn btn-primary btn-lg">Explore Services</a>
+        <a routerLink="/partner" class="btn btn-dark btn-lg">Become a Partner</a>
+      </div>
+    </div>
+  </section>
+</div>
