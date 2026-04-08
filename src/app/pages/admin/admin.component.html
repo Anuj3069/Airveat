@@ -104,5 +104,60 @@
         </div>
       </form>
     </div>
+
+    <!-- Live Services Catalog -->
+    <div class="live-services-section animate-fade-in-up">
+      <div class="section-header">
+        <h2 class="section-title">Live Service Catalog</h2>
+        <p class="section-subtitle">Current services synchronized from the production database.</p>
+        <button (click)="fetchApiServices()" class="btn-refresh" [disabled]="isLoadingApi">
+          <span class="material-icons-outlined" [class.rotating]="isLoadingApi">refresh</span>
+          Sync Now
+        </button>
+      </div>
+
+      <div *ngIf="isLoadingApi" class="loading-state">
+        <div class="loader"></div>
+        <p>Fetching latest services...</p>
+      </div>
+
+      <div *ngIf="apiError" class="error-state">
+        <span class="material-icons-outlined">error_outline</span>
+        <p>{{ apiError }}</p>
+        <button (click)="fetchApiServices()" class="btn btn-secondary">Retry Connection</button>
+      </div>
+
+      <div *ngIf="!isLoadingApi && !apiError" class="services-grid">
+        <div *ngFor="let service of apiServices" class="service-api-card">
+          <div class="card-header">
+            <span class="category-tag">{{ service.category.name }}</span>
+            <span class="price-tag">₹{{ service.price }}</span>
+          </div>
+          <div class="card-body">
+            <h3>{{ service.name }}</h3>
+            <p>{{ service.description }}</p>
+          </div>
+          <div class="card-footer">
+            <span class="duration">
+              <span class="material-icons-outlined">timer</span>
+              {{ service.duration }} mins
+            </span>
+            <div class="actions">
+              <button class="btn-icon" title="Edit Service">
+                <span class="material-icons-outlined">edit</span>
+              </button>
+              <button class="btn-icon btn-delete" title="Remove Service">
+                <span class="material-icons-outlined">delete_outline</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!isLoadingApi && apiServices.length === 0 && !apiError" class="empty-state">
+        <span class="material-icons-outlined">inventory_2</span>
+        <p>No services found in the database.</p>
+      </div>
+    </div>
   </div>
 </section>

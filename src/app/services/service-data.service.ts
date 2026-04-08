@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 export interface Service {
   id: string;
@@ -34,8 +36,28 @@ export interface Booking {
   price: string;
 }
 
+export interface ApiService {
+  _id: string;
+  name: string;
+  category: {
+    _id: string;
+    name: string;
+    description: string;
+    createdAt: string;
+    __v: number;
+  };
+  description: string;
+  price: number;
+  duration: number;
+  createdAt: string;
+  __v: number;
+}
+
 @Injectable({ providedIn: 'root' })
 export class ServiceDataService {
+  private apiUrl = 'https://av-backend-e4o9.onrender.com/api/services';
+
+  constructor(private http: HttpClient) {}
 
   private categories: Category[] = [
     {
@@ -386,5 +408,9 @@ export class ServiceDataService {
   private getRandomProfessional(): string {
     const names = ['Rajesh Kumar', 'Priya Sharma', 'Amit Patel', 'Sneha Reddy', 'Anil Deshmukh', 'Sunita Rao', 'Arjun Singh', 'Kavita Iyer'];
     return names[Math.floor(Math.random() * names.length)];
+  }
+
+  getApiServices(): Observable<ApiService[]> {
+    return this.http.get<ApiService[]>(this.apiUrl);
   }
 }

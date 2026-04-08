@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ServiceDataService, ApiService } from '../../services/service-data.service';
 
 @Component({
   selector: 'app-admin',
@@ -9,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit {
   serviceName = '';
   category = 'home-cleaning';
   price = '';
@@ -19,6 +20,33 @@ export class AdminComponent {
 
   isSubmitting = false;
   successMessage = '';
+
+  // API Services
+  apiServices: ApiService[] = [];
+  isLoadingApi = false;
+  apiError = '';
+
+  constructor(private serviceData: ServiceDataService) {}
+
+  ngOnInit() {
+    this.fetchApiServices();
+  }
+
+  fetchApiServices() {
+    this.isLoadingApi = true;
+    this.apiError = '';
+    this.serviceData.getApiServices().subscribe({
+      next: (data) => {
+        this.apiServices = data;
+        this.isLoadingApi = false;
+      },
+      error: (err) => {
+        console.error('Error fetching services:', err);
+        this.apiError = 'Failed to load live services. Please try again later.';
+        this.isLoadingApi = false;
+      }
+    });
+  }
 
   onSubmit() {
     this.isSubmitting = true;
