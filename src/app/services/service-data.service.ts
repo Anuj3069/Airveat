@@ -304,6 +304,26 @@ export class ServiceDataService {
             'Moisturizing and SPF application',
             'Aftercare recommendations'
           ]
+        },
+        {
+          id: 'pedicure-manicure',
+          name: 'Pedicure & Manicure',
+          category: 'Salon at Home',
+          description: 'Premium nail care, cleaning, and massage for hands and feet at your home.',
+          price: '₹799',
+          priceType: 'starts',
+          image: 'assets/images/pedicure.jpg',
+          rating: 4.8,
+          reviewCount: 954,
+          duration: '60-90 mins',
+          included: [
+            'Nail trimming and filing',
+            'Cuticle care and cleaning',
+            'Exfoliating scrub',
+            'Relaxing massage',
+            'Nail polish application',
+            'Moisturizing treatment'
+          ]
         }
       ]
     },
@@ -350,6 +370,26 @@ export class ServiceDataService {
             'Electrical wiring and connection',
             'Gas charging and pressure test',
             'Trial run and handover'
+          ]
+        },
+        {
+          id: 'ac-gas-refill',
+          name: 'AC Gas Refill',
+          category: 'AC Repair & Service',
+          description: 'Thorough leak testing and professional refrigerant gas top-up for optimal cooling.',
+          price: '₹2,499',
+          priceType: 'starts',
+          image: 'assets/images/ac-gas.jpg',
+          rating: 4.9,
+          reviewCount: 612,
+          duration: '1-2 hours',
+          included: [
+            'Comprehensive leak inspection',
+            'Pre-refill vacuuming',
+            'Premium quality gas refill',
+            'Cooling coil check',
+            'Pressure and performance test',
+            'Post-service cleanup'
           ]
         }
       ]

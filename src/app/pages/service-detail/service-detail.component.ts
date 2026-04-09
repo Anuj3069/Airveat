@@ -697,8 +697,10 @@ export class ServiceDetailComponent implements OnInit {
       'door-window-repair': 'linear-gradient(135deg, #f6d365 0%, #fda085 100%)',
       'haircut-styling': 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
       'facial-treatment': 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
+      'pedicure-manicure': 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
       'ac-service': 'linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)',
       'ac-installation': 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+      'ac-gas-refill': 'linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)',
     };
     return gradients[id] || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
   }

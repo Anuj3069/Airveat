@@ -54,10 +54,7 @@ import { CommonModule } from '@angular/common';
 
         <div class="hero-image animate-fade-in">
           <div class="hero-img-wrapper">
-            <div class="hero-img-placeholder">
-              <span class="material-icons-outlined" style="font-size:80px; color: white;">groups</span>
-              <p>Trusted Professionals</p>
-            </div>
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2fiNZfUYydgVPyMoQxPhVt1BxUdcrkRRRqu9TYszFsDgCFlq_MBmGNdWiNg0bjhH66SXSKPG8RT0phZnS7rvmE-DfZKRExXeLPVIUuarKxwSPXDqyWHLI7rPV_UKTLOVC_NIdK0CPM7EyBnfG1RYYu1c_wt8vQ0HCU0VkynE5UTT7-gH-saommMixfvTjbUqLC0K0VGLBxsgo7rjUYVwrA4ID3-xB6MfG_cjovYJN4qSycpldCoITUuYsweY4c4uB-e3yzwxP74YO" alt="Airveat Professionals" class="hero-img">
           </div>
         </div>
       </div>
@@ -81,12 +78,15 @@ import { CommonModule } from '@angular/common';
           <div class="popular-card" *ngFor="let service of popularServices; let i = index"
                [routerLink]="['/services']"
                [style.animation-delay]="i * 100 + 'ms'">
-            <div class="popular-card-content">
-              <h3>{{ service.name }}</h3>
-              <p class="popular-tags">{{ service.tags }}</p>
-            </div>
-            <div class="popular-card-arrow">
-              <span class="material-icons-outlined">arrow_forward</span>
+            <img *ngIf="service.image" [src]="service.image" [alt]="service.name" class="w-full h-40 object-cover">
+            <div class="popular-card-bottom">
+              <div class="popular-card-content">
+                <h3>{{ service.name }}</h3>
+                <p class="popular-tags">{{ service.tags }}</p>
+              </div>
+              <div class="popular-card-arrow">
+                <span class="material-icons-outlined">arrow_forward</span>
+              </div>
             </div>
           </div>
         </div>
@@ -102,7 +102,8 @@ import { CommonModule } from '@angular/common';
         <div class="steps-grid">
           <div class="step-card" *ngFor="let step of steps; let i = index">
             <div class="step-circle">
-              <span class="material-icons-outlined step-icon">{{ step.icon }}</span>
+              <img *ngIf="step.image" [src]="step.image" [alt]="step.title" class="w-full h-full object-cover">
+              <span *ngIf="!step.image" class="material-icons-outlined step-icon">{{ step.icon }}</span>
             </div>
             <div class="step-connector" *ngIf="i < steps.length - 1"></div>
             <h3 class="step-title">{{ step.title }}</h3>
@@ -131,13 +132,11 @@ import { CommonModule } from '@angular/common';
             </div>
           </div>
           <div class="why-images">
-            <div class="why-img-card">
-              <span class="material-icons-outlined" style="font-size:48px; color: rgba(255,255,255,0.8);">electrical_services</span>
-              <span>Expert Electricians</span>
+            <div class="why-img-card" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuDI1USyVyiGEXXJb3XdHnPJuSfj6I59-jZQv-wEO0h2AmMSV2TYsMS_rNduvuvwekn-0w2VMEdVPzK-2Dn1-dZKU8sbHrTv3KUFjcgZ_KxWilYPlKQNdYGFBJuCd5XANE8Sv9pn9lpC0t4TUzxiyBaj1f0NPfjOpxMQe7Dsje4fzUuEzuyQes-FHxhr9JRXq3MH6xYszuWuuu8HGRetSbg61FZV7d_jOLz5rmStQC_xEQdI-YqS7sF31YShUqPyCXhsoMPc2paLVlv7'); background-size: cover; background-position: center; border: none; align-items: center; justify-content: flex-end; padding-bottom: 16px;">
+              <span style="font-weight: 700; font-size: 15px; color: white;">Expert Electricians</span>
             </div>
-            <div class="why-img-card">
-              <span class="material-icons-outlined" style="font-size:48px; color: rgba(255,255,255,0.8);">kitchen</span>
-              <span>Kitchen Specialists</span>
+            <div class="why-img-card" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%), url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=600&auto=format&fit=crop'); background-size: cover; background-position: center; border: none; align-items: center; justify-content: flex-end; padding-bottom: 16px;">
+              <span style="font-weight: 700; font-size: 15px; color: white;">Kitchen Specialists</span>
             </div>
           </div>
         </div>
@@ -357,29 +356,43 @@ import { CommonModule } from '@angular/common';
 
     .hero-image {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      align-self: stretch;
+      width: 100%;
+      height: 100%;
     }
 
     .hero-img-wrapper {
       width: 100%;
-      max-width: 500px;
+      height: 100%;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      transition: box-shadow 0.4s ease;
     }
 
-    .hero-img-placeholder {
+    .hero-img-wrapper:hover {
+      box-shadow: var(--shadow-xl), 0 20px 40px rgba(0,0,0,0.12);
+    }
+
+    .hero-img-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
+      pointer-events: none;
+    }
+
+    .hero-img {
       width: 100%;
-      aspect-ratio: 4/3;
-      border-radius: var(--radius-xl);
-      background: linear-gradient(135deg, #1E3A5F 0%, #2D5F8A 50%, #1E3A5F 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      color: white;
-      font-size: 18px;
-      font-weight: 600;
-      box-shadow: var(--shadow-xl);
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .hero-img-wrapper:hover .hero-img {
+      transform: scale(1.08);
     }
 
     /* === Popular Services === */
@@ -420,16 +433,28 @@ import { CommonModule } from '@angular/common';
 
     .popular-card {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px;
+      flex-direction: column;
       background: var(--color-bg-light);
       border-radius: var(--radius-lg);
       cursor: pointer;
       transition: all var(--transition-base);
       animation: fadeInUp 0.5s ease forwards;
       opacity: 0;
+      overflow: hidden;
     }
+
+    .popular-card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      width: 100%;
+    }
+
+    .w-full { width: 100%; }
+    .h-full { height: 100%; }
+    .h-40 { height: 160px; }
+    .object-cover { object-fit: cover; }
 
     .popular-card:hover {
       background: white;
@@ -868,10 +893,10 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent {
   popularServices = [
-    { name: 'Salon at Home', tags: 'Haircut • Makeup • Spa' },
-    { name: 'Electrician', tags: 'Wiring • Carpentry • Painting' },
-    { name: 'Cleaning', tags: 'Full Home • Kitchen • Bathroom' },
-    { name: 'AC Repair', tags: 'Service • Installation • Gas Refill' }
+    { name: 'Salon at Home', tags: 'Haircut • Makeup • Spa', image: 'assets/images/popular_salon.png' },
+    { name: 'Electrician', tags: 'Wiring • Carpentry • Painting', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDI1USyVyiGEXXJb3XdHnPJuSfj6I59-jZQv-wEO0h2AmMSV2TYsMS_rNduvuvwekn-0w2VMEdVPzK-2Dn1-dZKU8sbHrTv3KUFjcgZ_KxWilYPlKQNdYGFBJuCd5XANE8Sv9pn9lpC0t4TUzxiyBaj1f0NPfjOpxMQe7Dsje4fzUuEzuyQes-FHxhr9JRXq3MH6xYszuWuuu8HGRetSbg61FZV7d_jOLz5rmStQC_xEQdI-YqS7sF31YShUqPyCXhsoMPc2paLVlv7' },
+    { name: 'Cleaning', tags: 'Full Home • Kitchen • Bathroom', image: 'assets/images/popular_cleaning.png' },
+    { name: 'AC Repair', tags: 'Service • Installation • Gas Refill', image: 'assets/images/popular_ac_repair.png' }
   ];
 
   valueBadges = [
@@ -901,16 +926,19 @@ export class HomeComponent {
   steps = [
     {
       icon: 'calendar_month',
+      image: 'assets/images/step_booking.png',
       title: 'Book Your Service',
       desc: 'Select your service, date, and preferred time slot online.'
     },
     {
       icon: 'engineering',
+      image: 'assets/images/step_arrives.png',
       title: 'Professional Arrives',
       desc: 'Our background-checked expert reaches your doorstep.'
     },
     {
       icon: 'sentiment_very_satisfied',
+      image: 'assets/images/popular_cleaning.png',
       title: 'Relax & Enjoy',
       desc: 'Enjoy your high-quality service and pay securely.'
     }
