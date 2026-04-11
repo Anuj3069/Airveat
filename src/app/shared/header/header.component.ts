@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   imports: [RouterLink, RouterLinkActive, CommonModule],
   template: `
     <!-- Top Info Bar -->
-    <div class="top-bar" [class.hidden]="isScrolled">
+    <div class="top-bar">
       <div class="container top-bar-inner">
         <div class="top-info">
           <a href="mailto:support@airveat.com" class="top-item">
@@ -151,11 +151,6 @@ import { CommonModule } from '@angular/common';
       transition: var(--transition);
       z-index: 1001;
       position: relative;
-    }
-
-    .top-bar.hidden {
-      margin-top: -40px;
-      opacity: 0;
     }
 
     .top-bar-inner {
