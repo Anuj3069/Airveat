@@ -61,336 +61,177 @@ export class ServiceDataService {
 
   private categories: Category[] = [
     {
-      name: 'Home Cleaning',
-      slug: 'home-cleaning',
+      name: 'Personal Assistance',
+      slug: 'personal-assistance',
       services: [
         {
-          id: 'full-house-deep-cleaning',
-          name: 'Full House Deep Cleaning',
-          category: 'Home Cleaning',
-          description: 'Intensive top-to-bottom cleaning including sanitization of all surfaces and high-traffic areas.',
-          price: '₹4,999',
-          priceType: 'starts',
-          image: 'assets/images/deep-cleaning.jpg',
+          id: 'queue-standing',
+          name: 'Queue Standing Services',
+          category: 'Personal Assistance',
+          description: 'Hire someone to wait in line for you for tickets, product launches, or appointments.',
+          price: '₹299',
+          priceType: 'hourly',
+          image: 'assets/images/queue-standing.png',
+          rating: 4.5,
+          reviewCount: 342,
+          duration: 'Flexible',
+          included: [ 'Line holding', 'Real-time updates', 'Secure spot hand-off', 'Rain or shine service' ]
+        },
+        {
+          id: 'personal-assistant',
+          name: 'Personal Assistant Services',
+          category: 'Personal Assistance',
+          description: 'Professional help for managing schedules, emails, bookings, and daily organization.',
+          price: '₹599',
+          priceType: 'hourly',
+          image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=600&auto=format&fit=crop',
           rating: 4.8,
-          reviewCount: 1324,
-          duration: '4-6 hours',
-          included: [
-            'Complete floor mopping and vacuuming',
-            'Bathroom deep scrub and disinfection',
-            'Kitchen countertop and appliance cleaning',
-            'Dusting of all surfaces, shelves, and fans',
-            'Window sill and glass cleaning',
-            'Trash removal and bin sanitization'
-          ]
+          reviewCount: 893,
+          duration: 'Flexible',
+          included: [ 'Schedule management', 'Email correspondence', 'Booking and reservations', 'Basic admin tasks' ]
         },
         {
-          id: 'sofa-carpet-shampoo',
-          name: 'Sofa & Carpet Shampoo',
-          category: 'Home Cleaning',
-          description: 'Professional eco-friendly steam cleaning to remove deep-seated allergens and stains.',
-          price: '₹1,599',
-          priceType: 'starts',
-          image: 'assets/images/carpet-cleaning.jpg',
-          rating: 4.7,
-          reviewCount: 886,
-          duration: '2-3 hours',
-          included: [
-            'Pre-treatment stain removal',
-            'Hot water extraction cleaning',
-            'Eco-friendly shampoo application',
-            'Deodorizing treatment',
-            'Quick-dry technology application',
-            'Post-cleaning inspection'
-          ]
-        },
-        {
-          id: 'kitchen-degreasing',
-          name: 'Kitchen Degreasing',
-          category: 'Home Cleaning',
-          description: 'Heavy-duty cleaning of stovetops, exhaust fans, and cabinet surfaces to remove oil buildup.',
-          price: '₹2,499',
-          priceType: 'starts',
-          image: 'assets/images/kitchen-cleaning.jpg',
-          rating: 4.9,
-          reviewCount: 742,
-          duration: '2-4 hours',
-          included: [
-            'Stovetop deep degreasing',
-            'Exhaust fan and chimney cleaning',
-            'Cabinet surface scrubbing',
-            'Sink and faucet polishing',
-            'Tile and grout cleaning',
-            'Countertop sanitization'
-          ]
-        }
-      ]
-    },
-    {
-      name: 'Electrical & Plumbing',
-      slug: 'electrical-plumbing',
-      services: [
-        {
-          id: 'emergency-electrical-repair',
-          name: 'Emergency Electrical Repair',
-          category: 'Electrical & Plumbing',
-          description: 'Immediate assistance for short circuits, power outages, and faulty wiring by certified experts.',
+          id: 'writing-helper',
+          name: 'Writing Helper Services',
+          category: 'Personal Assistance',
+          description: 'Expert assistance for drafting, editing, proofreading, and content creation.',
           price: '₹499',
           priceType: 'hourly',
-          image: 'assets/images/electrical-repair.jpg',
-          badge: 'MOST BOOKED',
-          ctaLabel: 'Instant Dispatch',
+          image: 'assets/images/writing-helper.png',
           rating: 4.9,
-          reviewCount: 2512,
-          duration: '1-3 hours',
-          included: [
-            'Circuit breaker inspection and reset',
-            'Faulty wiring identification and repair',
-            'Power outlet replacement',
-            'Switchboard troubleshooting',
-            'Safety compliance check',
-            'Emergency lighting setup'
-          ]
+          reviewCount: 512,
+          duration: 'Flexible',
+          included: [ 'Drafting documents', 'Proofreading', 'Content editing', 'Formatting' ]
         },
         {
-          id: 'leaking-pipe-fix',
-          name: 'Leaking Pipe Fix',
-          category: 'Electrical & Plumbing',
-          description: 'Quick fix for kitchen and bathroom leaks.',
+          id: 'task-assistant',
+          name: 'Task Assistant Services',
+          category: 'Personal Assistance',
+          description: 'General help for day-to-day random tasks and chores to save your time.',
+          price: '₹349',
+          priceType: 'hourly',
+          image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=600&auto=format&fit=crop',
+          rating: 4.6,
+          reviewCount: 785,
+          duration: 'Flexible',
+          included: [ 'Task execution', 'Misc chores', 'Organizing items', 'Documentation help' ]
+        },
+        {
+          id: 'personal-errand',
+          name: 'Personal Errand Service',
+          category: 'Personal Assistance',
+          description: 'Delivery mapping, grocery pickups, and running errands across the city.',
           price: '₹399',
           priceType: 'starts',
-          image: 'assets/images/pipe-fix.jpg',
-          rating: 4.6,
-          reviewCount: 1278,
-          duration: '1-2 hours',
-          included: [
-            'Leak source identification',
-            'Pipe joint sealing',
-            'Washer and gasket replacement',
-            'Pressure testing',
-            'Corrosion inspection',
-            'Water flow optimization'
-          ]
+          image: 'https://images.unsplash.com/photo-1586880244406-556ebe35f282?q=80&w=600&auto=format&fit=crop',
+          rating: 4.7,
+          reviewCount: 1102,
+          duration: '1-3 hours',
+          included: [ 'Grocery pickup', 'Package delivery', 'Dry cleaning drop-off', 'Local purchases' ]
         },
         {
-          id: 'appliance-installation',
-          name: 'Appliance Installation',
-          category: 'Electrical & Plumbing',
-          description: 'Safe mounting and wiring for new appliances.',
+          id: 'office-assistant',
+          name: 'Office Assistant Service',
+          category: 'Personal Assistance',
+          description: 'On-demand administrative help and office maintenance support.',
+          price: '₹699',
+          priceType: 'hourly',
+          image: 'https://images.unsplash.com/photo-1524749292158-7540c2494485?q=80&w=600&auto=format&fit=crop',
+          rating: 4.8,
+          reviewCount: 420,
+          duration: 'Flexible',
+          included: [ 'File organization', 'Basic data entry', 'Office tidying', 'Scheduling help' ]
+        }
+      ]
+    },
+    {
+      name: 'Health & Wellness',
+      slug: 'health-wellness',
+      services: [
+        {
+          id: 'elderly-support',
+          name: 'Elderly Support Services',
+          category: 'Health & Wellness',
+          description: 'Compassionate companionship, assistance with daily routines, and medical visit accompaniments.',
+          price: '₹499',
+          priceType: 'hourly',
+          image: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=600&auto=format&fit=crop',
+          badge: 'CARE',
+          rating: 4.9,
+          reviewCount: 1530,
+          duration: 'Flexible',
+          included: [ 'Companionship', 'Medication reminders', 'Mobility assistance', 'Meal help' ]
+        },
+        {
+          id: 'home-yoga',
+          name: 'Home Yoga Service',
+          category: 'Health & Wellness',
+          description: 'Personalized yoga sessions at home guided by certified instructors for physical and mental well-being.',
+          price: '₹799',
+          priceType: 'hourly',
+          image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=600&auto=format&fit=crop',
+          rating: 4.8,
+          reviewCount: 882,
+          duration: '60 mins',
+          included: [ 'Personalized routines', 'Posture correction', 'Breathing exercises', 'Meditation guidance' ]
+        },
+        {
+          id: 'home-workout',
+          name: 'Home Workout Service',
+          category: 'Health & Wellness',
+          description: '1-on-1 personal training and fitness coaching tailored to your goals in your living room.',
+          price: '₹899',
+          priceType: 'hourly',
+          image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=600&auto=format&fit=crop',
+          rating: 4.7,
+          reviewCount: 712,
+          duration: '60 mins',
+          included: [ 'Custom fitness plan', 'Form monitoring', 'Cardio & strength training', 'Equipment guidance' ]
+        }
+      ]
+    },
+    {
+      name: 'Outdoor & Specialized',
+      slug: 'outdoor-specialized',
+      services: [
+        {
+          id: 'garden-cutting',
+          name: 'Garden Cutting Service',
+          category: 'Outdoor & Specialized',
+          description: 'Professional lawn mowing, pruning, and general garden maintenance and cleanup.',
           price: '₹599',
           priceType: 'starts',
-          image: 'assets/images/appliance-install.jpg',
-          rating: 4.7,
-          reviewCount: 1195,
+          image: 'assets/images/garden-cutting.png',
+          rating: 4.6,
+          reviewCount: 520,
           duration: '1-3 hours',
-          included: [
-            'Appliance unboxing and inspection',
-            'Electrical connection setup',
-            'Wall mounting (if applicable)',
-            'Plumbing connection (if applicable)',
-            'Functionality testing',
-            'Old appliance removal'
-          ]
-        }
-      ]
-    },
-    {
-      name: 'Painting & Renovation',
-      slug: 'painting-renovation',
-      services: [
-        {
-          id: 'interior-wall-painting',
-          name: 'Interior Wall Painting',
-          category: 'Painting & Renovation',
-          description: 'Professional wall painting with premium paints and flawless finish for any room size.',
-          price: '₹14,999',
-          priceType: 'starts',
-          image: 'assets/images/wall-painting.jpg',
-          badge: 'POPULAR',
-          rating: 4.8,
-          reviewCount: 967,
-          duration: '1-3 days',
-          included: [
-            'Surface preparation and priming',
-            'Premium paint application (2 coats)',
-            'Edge cutting and trim work',
-            'Furniture protection and covering',
-            'Post-painting cleanup',
-            'Color consultation included'
-          ]
+          included: [ 'Lawn mowing', 'Hedge trimming', 'Weed removal', 'Waste cleanup' ]
         },
         {
-          id: 'waterproofing',
-          name: 'Waterproofing Solutions',
-          category: 'Painting & Renovation',
-          description: 'Protect your walls and roof from water damage with professional waterproofing treatment.',
-          price: '₹8,999',
-          priceType: 'starts',
-          image: 'assets/images/waterproofing.jpg',
-          rating: 4.7,
-          reviewCount: 634,
-          duration: '1-2 days',
-          included: [
-            'Damage assessment and diagnosis',
-            'Surface cleaning and preparation',
-            'Waterproof membrane application',
-            'Joint and crack sealing',
-            'Drainage improvement',
-            'Quality assurance testing'
-          ]
-        },
-        {
-          id: 'door-window-repair',
-          name: 'Door & Window Repair',
-          category: 'Painting & Renovation',
-          description: 'Fix squeaky doors, broken hinges, and damaged window frames with expert carpentry work.',
-          price: '₹699',
-          priceType: 'starts',
-          image: 'assets/images/door-repair.jpg',
+          id: 'farming-helper',
+          name: 'Farming Helper Instant',
+          category: 'Outdoor & Specialized',
+          description: 'Instant manual labor assistance for farming, harvesting, and agricultural activities.',
+          price: '₹399',
+          priceType: 'hourly',
+          image: 'assets/images/farming-helper.png',
           rating: 4.5,
-          reviewCount: 498,
-          duration: '1-3 hours',
-          included: [
-            'Hinge replacement or repair',
-            'Frame alignment adjustment',
-            'Lock mechanism repair',
-            'Weather stripping installation',
-            'Glass panel replacement',
-            'Wood treatment and finishing'
-          ]
-        }
-      ]
-    },
-    {
-      name: 'Salon at Home',
-      slug: 'salon-at-home',
-      services: [
-        {
-          id: 'haircut-styling',
-          name: 'Haircut & Styling',
-          category: 'Salon at Home',
-          description: 'Professional haircut and styling at the comfort of your home by certified stylists.',
-          price: '₹299',
-          priceType: 'starts',
-          image: 'assets/images/haircut.jpg',
-          rating: 4.8,
-          reviewCount: 1456,
-          duration: '45-60 mins',
-          included: [
-            'Hair wash and conditioning',
-            'Precision haircut',
-            'Blow dry and styling',
-            'Scalp massage',
-            'Style recommendations',
-            'Product application'
-          ]
+          reviewCount: 310,
+          duration: 'Flexible',
+          included: [ 'Harvesting assistance', 'Soil preparation', 'Equipment handling', 'Crop care' ]
         },
         {
-          id: 'facial-treatment',
-          name: 'Facial Treatment',
-          category: 'Salon at Home',
-          description: 'Rejuvenating facial treatments using premium products for glowing, healthy skin.',
+          id: 'tour-guide',
+          name: 'Tour Guide Services',
+          category: 'Outdoor & Specialized',
+          description: 'Local experts to guide you through city tours, historical landmarks, and hidden gems.',
           price: '₹999',
           priceType: 'starts',
-          image: 'assets/images/facial.jpg',
+          image: 'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?q=80&w=600&auto=format&fit=crop',
           rating: 4.9,
-          reviewCount: 1312,
-          duration: '60-90 mins',
-          included: [
-            'Skin analysis and consultation',
-            'Deep cleansing and exfoliation',
-            'Steam treatment',
-            'Face mask application',
-            'Moisturizing and SPF application',
-            'Aftercare recommendations'
-          ]
-        },
-        {
-          id: 'pedicure-manicure',
-          name: 'Pedicure & Manicure',
-          category: 'Salon at Home',
-          description: 'Premium nail care, cleaning, and massage for hands and feet at your home.',
-          price: '₹799',
-          priceType: 'starts',
-          image: 'assets/images/pedicure.jpg',
-          rating: 4.8,
-          reviewCount: 954,
-          duration: '60-90 mins',
-          included: [
-            'Nail trimming and filing',
-            'Cuticle care and cleaning',
-            'Exfoliating scrub',
-            'Relaxing massage',
-            'Nail polish application',
-            'Moisturizing treatment'
-          ]
-        }
-      ]
-    },
-    {
-      name: 'AC Repair & Service',
-      slug: 'ac-repair',
-      services: [
-        {
-          id: 'ac-service',
-          name: 'AC Regular Service',
-          category: 'AC Repair & Service',
-          description: 'Complete AC servicing including filter cleaning, gas check, and performance optimization.',
-          price: '₹1,299',
-          priceType: 'starts',
-          image: 'assets/images/ac-service.jpg',
-          badge: 'SEASONAL DEAL',
-          rating: 4.7,
-          reviewCount: 1389,
-          duration: '1-2 hours',
-          included: [
-            'Filter removal and deep cleaning',
-            'Condenser coil cleaning',
-            'Refrigerant level check',
-            'Thermostat calibration',
-            'Drainage pipe cleaning',
-            'Performance efficiency test'
-          ]
-        },
-        {
-          id: 'ac-installation',
-          name: 'AC Installation',
-          category: 'AC Repair & Service',
-          description: 'Expert installation of split and window ACs with proper mounting and electrical setup.',
-          price: '₹1,999',
-          priceType: 'starts',
-          image: 'assets/images/ac-install.jpg',
-          rating: 4.6,
-          reviewCount: 901,
-          duration: '2-4 hours',
-          included: [
-            'Site survey and bracket mounting',
-            'Indoor/outdoor unit installation',
-            'Copper piping and insulation',
-            'Electrical wiring and connection',
-            'Gas charging and pressure test',
-            'Trial run and handover'
-          ]
-        },
-        {
-          id: 'ac-gas-refill',
-          name: 'AC Gas Refill',
-          category: 'AC Repair & Service',
-          description: 'Thorough leak testing and professional refrigerant gas top-up for optimal cooling.',
-          price: '₹2,499',
-          priceType: 'starts',
-          image: 'assets/images/ac-gas.jpg',
-          rating: 4.9,
-          reviewCount: 612,
-          duration: '1-2 hours',
-          included: [
-            'Comprehensive leak inspection',
-            'Pre-refill vacuuming',
-            'Premium quality gas refill',
-            'Cooling coil check',
-            'Pressure and performance test',
-            'Post-service cleanup'
-          ]
+          reviewCount: 1045,
+          duration: 'Half/Full Day',
+          included: [ 'Customized itinerary', 'Historical insights', 'Local navigation', 'Photo spots recommendations' ]
         }
       ]
     }

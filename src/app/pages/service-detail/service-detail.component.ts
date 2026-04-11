@@ -24,7 +24,7 @@ import { ServiceDataService, Service } from '../../services/service-data.service
           <!-- Left Content -->
           <div class="detail-content animate-fade-in-up">
             <!-- Hero Image -->
-            <div class="detail-hero" [style.background]="getServiceImageStyle(service.id)">
+            <div class="detail-hero" [style.background]="getServiceImageStyle(service)">
               <span class="detail-badge" *ngIf="service.badge">{{ service.badge }}</span>
             </div>
 
@@ -681,12 +681,12 @@ export class ServiceDetailComponent implements OnInit {
     return Array(Math.floor(rating)).fill(0);
   }
 
-  getServiceImageStyle(id: string): string {
+  getServiceImageStyle(service: Service): string {
     const images: Record<string, string> = {
       'full-house-deep-cleaning': 'assets/images/popular_cleaning.png',
       'sofa-carpet-shampoo': 'assets/images/carpet-cleaning.jpg',
       'kitchen-degreasing': 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=600&auto=format&fit=crop',
-      'emergency-electrical-repair': 'https://lh3.googleusercontent.com/aida-public/AB6AXuDI1USyVyiGEXXJb3XdHnPJuSfj6I59-jZQv-wEO0h2AmMSV2TYsMS_rNduvuvwekn-0w2VMEdVPzK-2Dn1-dZKU8sbHrTv3KUFjcgZ_KxWilYPlKQNdYGFBJuCd5XANE8Sv9pn9lpC0t4TUzxiyBaj1f0NPfjOpxMQe7Dsje4fzUuEzuyQes-FHxhr9JRXq3MH6xYszuWuuu8HGRetSbg61FZV7d_jOLz5rmStQC_xEQdI-YqS7sF31YShUqPyCXhsoMPc2paLVlv7',
+      'emergency-electrical-repair': 'assets/images/electrical-repair.jpg',
       'leaking-pipe-fix': 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=600&auto=format&fit=crop',
       'appliance-installation': 'assets/images/appliance-install.jpg',
       'interior-wall-painting': 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600&auto=format&fit=crop',
@@ -699,7 +699,7 @@ export class ServiceDetailComponent implements OnInit {
       'ac-installation': 'assets/images/popular_ac_repair.png',
       'ac-gas-refill': 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=600&auto=format&fit=crop',
     };
-    const imageUrl = images[id] || 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=600&auto=format&fit=crop';
+    const imageUrl = images[service.id] || service.image || 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=600&auto=format&fit=crop';
     return `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('${imageUrl}') center / cover no-repeat`;
   }
 
@@ -715,4 +715,3 @@ export class ServiceDetailComponent implements OnInit {
   }
 
 }
-

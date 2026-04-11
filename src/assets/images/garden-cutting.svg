@@ -1,0 +1,35 @@
+<svg width="900" height="560" viewBox="0 0 900 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gardenSky" x1="0" x2="900" y1="0" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DFF7EA"/>
+      <stop offset="1" stop-color="#F8FAFC"/>
+    </linearGradient>
+    <linearGradient id="grass" x1="0" x2="900" y1="306" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22C55E"/>
+      <stop offset="1" stop-color="#166534"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="560" fill="url(#gardenSky)"/>
+  <circle cx="730" cy="112" r="54" fill="#FBBF24"/>
+  <rect x="0" y="306" width="900" height="254" fill="url(#grass)"/>
+  <path d="M0 334C90 294 164 332 250 300C342 266 414 326 510 296C644 254 738 310 900 276V360H0V334Z" fill="#86EFAC"/>
+  <path d="M88 424C152 392 214 394 282 424" stroke="#DCFCE7" stroke-width="10" stroke-linecap="round"/>
+  <path d="M552 430C628 392 714 392 794 430" stroke="#DCFCE7" stroke-width="10" stroke-linecap="round"/>
+  <rect x="136" y="166" width="92" height="178" rx="46" fill="#166534"/>
+  <rect x="108" y="206" width="148" height="132" rx="66" fill="#15803D"/>
+  <rect x="178" y="304" width="14" height="150" fill="#7C2D12"/>
+  <rect x="638" y="178" width="102" height="166" rx="51" fill="#166534"/>
+  <rect x="608" y="220" width="162" height="124" rx="62" fill="#15803D"/>
+  <rect x="684" y="308" width="14" height="146" fill="#7C2D12"/>
+  <path d="M330 216C356 190 400 190 426 216C449 239 449 278 426 302L378 350L330 302C307 278 307 239 330 216Z" fill="#DC2626"/>
+  <circle cx="378" cy="254" r="36" fill="#B77952"/>
+  <path d="M334 448C334 390 354 330 378 330C402 330 422 390 422 448H334Z" fill="#1F2937"/>
+  <rect x="458" y="370" width="210" height="76" rx="24" fill="#E5E7EB" stroke="#111827" stroke-width="8"/>
+  <circle cx="502" cy="458" r="26" fill="#111827"/>
+  <circle cx="624" cy="458" r="26" fill="#111827"/>
+  <rect x="534" y="326" width="68" height="48" rx="12" fill="#DC2626"/>
+  <path d="M458 392L400 348" stroke="#111827" stroke-width="12" stroke-linecap="round"/>
+  <path d="M672 384L746 322" stroke="#111827" stroke-width="12" stroke-linecap="round"/>
+  <path d="M474 348H642" stroke="#111827" stroke-width="10" stroke-linecap="round"/>
+  <path d="M132 496H782" stroke="#14532D" stroke-width="16" stroke-linecap="round"/>
+</svg>

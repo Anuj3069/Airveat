@@ -76,7 +76,7 @@ import { CommonModule } from '@angular/common';
 
         <div class="popular-grid">
           <div class="popular-card" *ngFor="let service of popularServices; let i = index"
-               [routerLink]="['/services']"
+               [routerLink]="['/services', service.id]"
                [style.animation-delay]="i * 100 + 'ms'">
             <img *ngIf="service.image" [src]="service.image" [alt]="service.name" class="w-full h-40 object-cover">
             <div class="popular-card-bottom">
@@ -132,11 +132,11 @@ import { CommonModule } from '@angular/common';
             </div>
           </div>
           <div class="why-images">
-            <div class="why-img-card" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuDI1USyVyiGEXXJb3XdHnPJuSfj6I59-jZQv-wEO0h2AmMSV2TYsMS_rNduvuvwekn-0w2VMEdVPzK-2Dn1-dZKU8sbHrTv3KUFjcgZ_KxWilYPlKQNdYGFBJuCd5XANE8Sv9pn9lpC0t4TUzxiyBaj1f0NPfjOpxMQe7Dsje4fzUuEzuyQes-FHxhr9JRXq3MH6xYszuWuuu8HGRetSbg61FZV7d_jOLz5rmStQC_xEQdI-YqS7sF31YShUqPyCXhsoMPc2paLVlv7'); background-size: cover; background-position: center; border: none; align-items: center; justify-content: flex-end; padding-bottom: 16px;">
-              <span style="font-weight: 700; font-size: 15px; color: white;">Expert Electricians</span>
+            <div class="why-img-card" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%), url('assets/images/queue-standing.png'); background-size: cover; background-position: center; border: none; align-items: center; justify-content: flex-end; padding-bottom: 16px;">
+              <span style="font-weight: 700; font-size: 15px; color: white;">Wait in Queue</span>
             </div>
-            <div class="why-img-card" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%), url('https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=600&auto=format&fit=crop'); background-size: cover; background-position: center; border: none; align-items: center; justify-content: flex-end; padding-bottom: 16px;">
-              <span style="font-weight: 700; font-size: 15px; color: white;">Kitchen Specialists</span>
+            <div class="why-img-card" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent 50%), url('assets/images/garden-cutting.png'); background-size: cover; background-position: center; border: none; align-items: center; justify-content: flex-end; padding-bottom: 16px;">
+              <span style="font-weight: 700; font-size: 15px; color: white;">Garden Care</span>
             </div>
           </div>
         </div>
@@ -860,7 +860,7 @@ import { CommonModule } from '@angular/common';
       .coming-soon-card {
         padding: 40px 24px;
       }
-      
+
       .banner-inner {
         flex-direction: column;
         text-align: center;
@@ -893,10 +893,10 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent {
   popularServices = [
-    { name: 'Salon at Home', tags: 'Haircut • Makeup • Spa', image: 'assets/images/popular_salon.png' },
-    { name: 'Electrician', tags: 'Wiring • Carpentry • Painting', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDI1USyVyiGEXXJb3XdHnPJuSfj6I59-jZQv-wEO0h2AmMSV2TYsMS_rNduvuvwekn-0w2VMEdVPzK-2Dn1-dZKU8sbHrTv3KUFjcgZ_KxWilYPlKQNdYGFBJuCd5XANE8Sv9pn9lpC0t4TUzxiyBaj1f0NPfjOpxMQe7Dsje4fzUuEzuyQes-FHxhr9JRXq3MH6xYszuWuuu8HGRetSbg61FZV7d_jOLz5rmStQC_xEQdI-YqS7sF31YShUqPyCXhsoMPc2paLVlv7' },
-    { name: 'Cleaning', tags: 'Full Home • Kitchen • Bathroom', image: 'assets/images/popular_cleaning.png' },
-    { name: 'AC Repair', tags: 'Service • Installation • Gas Refill', image: 'assets/images/popular_ac_repair.png' }
+    { id: 'queue-standing', name: 'Queue Standing', tags: 'Tickets • Booking • Waiting', image: 'assets/images/queue-standing.png' },
+    { id: 'garden-cutting', name: 'Garden Cutting', tags: 'Lawn • Pruning • Maintenance', image: 'assets/images/garden-cutting.png' },
+    { id: 'writing-helper', name: 'Writing Helper', tags: 'Content • Editing • Proofing', image: 'assets/images/writing-helper.png' },
+    { id: 'elderly-support', name: 'Elderly Support', tags: 'Care • Companionship • Assistance', image: 'https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=600&auto=format&fit=crop' }
   ];
 
   valueBadges = [

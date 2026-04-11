@@ -35,13 +35,13 @@ import { ServiceDataService, Category, Service } from '../../services/service-da
               </a>
             </div>
 
-            <!-- Home Cleaning style: 3-column equal grid -->
-            <div class="service-grid" *ngIf="category.slug === 'home-cleaning' || category.slug === 'painting-renovation' || category.slug === 'salon-at-home' || category.slug === 'ac-repair'">
+            <!-- Home Cleaning style: 3-column equal grid for everything except electrical/plumbing -->
+            <div class="service-grid" *ngIf="category.slug !== 'electrical-plumbing'">
               <div class="service-card" *ngFor="let service of category.services; let i = index"
                    [routerLink]="['/services', service.id]"
                    [style.animation-delay]="i * 100 + 'ms'">
                 <div class="card-image">
-                  <div class="card-img-placeholder" [style.background]="getServiceImageStyle(service.id)">
+                  <div class="card-img-placeholder" [style.background]="getServiceImageStyle(service)">
                   </div>
                   <span class="card-badge" *ngIf="service.badge">{{ service.badge }}</span>
                 </div>
@@ -69,7 +69,7 @@ import { ServiceDataService, Category, Service } from '../../services/service-da
               <div class="bento-featured"
                    *ngIf="category.services[0] as featured"
                    [routerLink]="['/services', featured.id]">
-                <div class="bento-featured-img" [style.background]="getServiceImageStyle(featured.id)">
+                <div class="bento-featured-img" [style.background]="getServiceImageStyle(featured)">
                   <span class="card-badge" *ngIf="featured.badge">{{ featured.badge }}</span>
                 </div>
                 <div class="bento-featured-body">
@@ -91,7 +91,7 @@ import { ServiceDataService, Category, Service } from '../../services/service-da
                 <div class="bento-side-card"
                      *ngFor="let service of category.services.slice(1)"
                      [routerLink]="['/services', service.id]">
-                  <div class="bento-side-img" [style.background]="getServiceImageStyle(service.id)">
+                  <div class="bento-side-img" [style.background]="getServiceImageStyle(service)">
                   </div>
                   <div class="bento-side-body">
                     <h3>{{ service.name }}</h3>
@@ -451,12 +451,12 @@ export class ServicesComponent {
       .filter(cat => cat.services.length > 0);
   }
 
-  getServiceImageStyle(id: string): string {
+  getServiceImageStyle(service: any): string {
     const images: Record<string, string> = {
       'full-house-deep-cleaning': 'assets/images/popular_cleaning.png',
       'sofa-carpet-shampoo': 'assets/images/carpet-cleaning.jpg',
       'kitchen-degreasing': 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=600&auto=format&fit=crop',
-      'emergency-electrical-repair': 'https://lh3.googleusercontent.com/aida-public/AB6AXuDI1USyVyiGEXXJb3XdHnPJuSfj6I59-jZQv-wEO0h2AmMSV2TYsMS_rNduvuvwekn-0w2VMEdVPzK-2Dn1-dZKU8sbHrTv3KUFjcgZ_KxWilYPlKQNdYGFBJuCd5XANE8Sv9pn9lpC0t4TUzxiyBaj1f0NPfjOpxMQe7Dsje4fzUuEzuyQes-FHxhr9JRXq3MH6xYszuWuuu8HGRetSbg61FZV7d_jOLz5rmStQC_xEQdI-YqS7sF31YShUqPyCXhsoMPc2paLVlv7',
+      'emergency-electrical-repair': 'assets/images/electrical-repair.jpg',
       'leaking-pipe-fix': 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=600&auto=format&fit=crop',
       'appliance-installation': 'assets/images/appliance-install.jpg',
       'interior-wall-painting': 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600&auto=format&fit=crop',
@@ -469,7 +469,7 @@ export class ServicesComponent {
       'ac-installation': 'assets/images/popular_ac_repair.png',
       'ac-gas-refill': 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=600&auto=format&fit=crop',
     };
-    const imageUrl = images[id] || 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=600&auto=format&fit=crop';
+    const imageUrl = images[service.id] || service.image || 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=600&auto=format&fit=crop';
     return `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('${imageUrl}') center / cover no-repeat`;
   }
 
@@ -479,7 +479,10 @@ export class ServicesComponent {
       'electrical-plumbing': 'electrical_services',
       'painting-renovation': 'format_paint',
       'salon-at-home': 'spa',
-      'ac-repair': 'ac_unit'
+      'ac-repair': 'ac_unit',
+      'personal-assistance': 'support_agent',
+      'health-wellness': 'favorite',
+      'outdoor-specialized': 'nature'
     };
     return icons[slug] || 'home_repair_service';
   }
