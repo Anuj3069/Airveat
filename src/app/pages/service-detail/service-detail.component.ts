@@ -24,10 +24,7 @@ import { ServiceDataService, Service } from '../../services/service-data.service
           <!-- Left Content -->
           <div class="detail-content animate-fade-in-up">
             <!-- Hero Image -->
-            <div class="detail-hero" [style.background]="getGradient(service.id)">
-              <span class="material-icons-outlined" style="font-size:80px; color:rgba(255,255,255,0.85)">
-                {{ getCategoryIcon(service.category) }}
-              </span>
+            <div class="detail-hero" [style.background]="getServiceImageStyle(service.id)">
               <span class="detail-badge" *ngIf="service.badge">{{ service.badge }}</span>
             </div>
 
@@ -684,25 +681,26 @@ export class ServiceDetailComponent implements OnInit {
     return Array(Math.floor(rating)).fill(0);
   }
 
-  getGradient(id: string): string {
-    const gradients: Record<string, string> = {
-      'full-house-deep-cleaning': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      'sofa-carpet-shampoo': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-      'kitchen-degreasing': 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-      'emergency-electrical-repair': 'linear-gradient(135deg, #1e3a5f 0%, #2d5f8a 100%)',
-      'leaking-pipe-fix': 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
-      'appliance-installation': 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
-      'interior-wall-painting': 'linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)',
-      'waterproofing': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      'door-window-repair': 'linear-gradient(135deg, #f6d365 0%, #fda085 100%)',
-      'haircut-styling': 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-      'facial-treatment': 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)',
-      'pedicure-manicure': 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
-      'ac-service': 'linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)',
-      'ac-installation': 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-      'ac-gas-refill': 'linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)',
+  getServiceImageStyle(id: string): string {
+    const images: Record<string, string> = {
+      'full-house-deep-cleaning': 'assets/images/popular_cleaning.png',
+      'sofa-carpet-shampoo': 'assets/images/carpet-cleaning.jpg',
+      'kitchen-degreasing': 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=600&auto=format&fit=crop',
+      'emergency-electrical-repair': 'https://lh3.googleusercontent.com/aida-public/AB6AXuDI1USyVyiGEXXJb3XdHnPJuSfj6I59-jZQv-wEO0h2AmMSV2TYsMS_rNduvuvwekn-0w2VMEdVPzK-2Dn1-dZKU8sbHrTv3KUFjcgZ_KxWilYPlKQNdYGFBJuCd5XANE8Sv9pn9lpC0t4TUzxiyBaj1f0NPfjOpxMQe7Dsje4fzUuEzuyQes-FHxhr9JRXq3MH6xYszuWuuu8HGRetSbg61FZV7d_jOLz5rmStQC_xEQdI-YqS7sF31YShUqPyCXhsoMPc2paLVlv7',
+      'leaking-pipe-fix': 'https://images.unsplash.com/photo-1585704032915-c3400ca199e7?q=80&w=600&auto=format&fit=crop',
+      'appliance-installation': 'assets/images/appliance-install.jpg',
+      'interior-wall-painting': 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=600&auto=format&fit=crop',
+      'waterproofing': 'assets/images/waterproofing.jpg',
+      'door-window-repair': 'assets/images/door-repair.jpg',
+      'haircut-styling': 'assets/images/popular_salon.png',
+      'facial-treatment': 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?q=80&w=600&auto=format&fit=crop',
+      'pedicure-manicure': 'https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=600&auto=format&fit=crop',
+      'ac-service': 'assets/images/popular_ac_repair.png',
+      'ac-installation': 'assets/images/popular_ac_repair.png',
+      'ac-gas-refill': 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=600&auto=format&fit=crop',
     };
-    return gradients[id] || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+    const imageUrl = images[id] || 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=600&auto=format&fit=crop';
+    return `linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.3)), url('${imageUrl}') center / cover no-repeat`;
   }
 
   getCategoryIcon(category: string): string {
